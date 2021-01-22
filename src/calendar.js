@@ -273,9 +273,9 @@ angular.module('ui.calendar', [])
                             calendar.fullCalendar('destroy');
                         }
                         if (attrs.calendar) {
-                            calendar = uiCalendarConfig.calendars[attrs.calendar] = angular.element(elm).html('');
+                            calendar = uiCalendarConfig.calendars[attrs.calendar] = $(elm).html('');
                         } else {
-                            calendar = angular.element(elm).html('');
+                            calendar = $(elm).html('');
                         }
                     };
 
@@ -283,7 +283,9 @@ angular.module('ui.calendar', [])
                         if (!calendar) {
                             calendar = $(elm).html('');
                         }
-                        calendar.fullCalendar(options);
+
+                        try {calendar.fullCalendar(options)} catch(e) {}
+
                         if (attrs.calendar) {
                             uiCalendarConfig.calendars[attrs.calendar] = calendar;
                         }
